@@ -41,11 +41,10 @@
 					<BlurFade
 						delay={BLUR_FADE_DELAY}
 						class="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
-						yOffset={8}>Hi, I'm Bhide 👋</BlurFade
+						yOffset={8}>Hi, I'm {DATA.name} 👋</BlurFade
 					>
 					<BlurFade class="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY}
-						>Software Engineer turned Entrepreneur. I love building things and helping people. Very
-						active on Twitter.</BlurFade
+						>{DATA.description}</BlurFade
 					>
 				</div>
 				<BlurFade delay={BLUR_FADE_DELAY}>
@@ -153,38 +152,40 @@
 			</div>
 		</div>
 	</section>
-	<section id="hackathons">
-		<div class="w-full space-y-12 py-12">
-			<BlurFade delay={BLUR_FADE_DELAY}>
-				<div class="flex flex-col items-center justify-center space-y-4 text-center">
-					<div class="space-y-2">
-						<div class="inline-block rounded-lg bg-foreground px-3 py-1 text-sm text-background">
-							Hackathons
+	{#if DATA.hackathons.length > 0}
+		<section id="hackathons">
+			<div class="w-full space-y-12 py-12">
+				<BlurFade delay={BLUR_FADE_DELAY}>
+					<div class="flex flex-col items-center justify-center space-y-4 text-center">
+						<div class="space-y-2">
+							<div class="inline-block rounded-lg bg-foreground px-3 py-1 text-sm text-background">
+								Hackathons
+							</div>
+							<h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">I like building things</h2>
+							<p
+								class="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+							>
+								During my time in university, I attended{' '}
+								{DATA.hackathons.length}+ hackathons. People from around the country would come
+								together and build incredible things in 2-3 days. It was eye-opening to see the
+								endless possibilities brought to life by a group of motivated and passionate
+								individuals.
+							</p>
 						</div>
-						<h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">I like building things</h2>
-						<p
-							class="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
-						>
-							During my time in university, I attended{' '}
-							{DATA.hackathons.length}+ hackathons. People from around the country would come
-							together and build incredible things in 2-3 days. It was eye-opening to see the
-							endless possibilities brought to life by a group of motivated and passionate
-							individuals.
-						</p>
 					</div>
-				</div>
-			</BlurFade>
-			<BlurFade delay={BLUR_FADE_DELAY * 2}>
-				<ul class="mb-4 ml-4 divide-y divide-dashed border-l">
-					{#each DATA.hackathons as project}
-						<BlurFade delay={BLUR_FADE_DELAY}>
-							<HackathonCard {...project} />
-						</BlurFade>
-					{/each}
-				</ul>
-			</BlurFade>
-		</div>
-	</section>
+				</BlurFade>
+				<BlurFade delay={BLUR_FADE_DELAY * 2}>
+					<ul class="mb-4 ml-4 divide-y divide-dashed border-l">
+						{#each DATA.hackathons as project}
+							<BlurFade delay={BLUR_FADE_DELAY}>
+								<HackathonCard {...project} />
+							</BlurFade>
+						{/each}
+					</ul>
+				</BlurFade>
+			</div>
+		</section>
+	{/if}
 	<section id="contact">
 		<div class="grid w-full items-center justify-center gap-4 px-4 py-12 text-center md:px-6">
 			<BlurFade delay={BLUR_FADE_DELAY * 2}>
@@ -196,11 +197,11 @@
 					<p
 						class="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 					>
-						Want to chat? Just shoot me a dm
-						<a href={DATA.contact.social.X.url} class="text-blue-500 hover:underline">
-							with a direct question on twitter
+						Want to chat? Just shoot me an email
+						<a href={DATA.contact.social.email.url} class="text-blue-500 hover:underline">
+							directly
 						</a>
-						and I&apos;ll respond whenever I can. I will ignore all soliciting.
+						and I&apos;ll respond whenever I can.
 					</p>
 				</div>
 			</BlurFade>

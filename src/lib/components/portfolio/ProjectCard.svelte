@@ -29,7 +29,9 @@
 				muted
 			></video>
 		{:else}
-			<img class="h-40 w-full overflow-hidden object-cover object-top" src={image} alt={title} />
+			<div class="h-40 w-full overflow-hidden">
+				<img class="h-full w-full object-contain object-top" src={image} alt={title} />
+			</div>
 		{/if}
 	</a>
 	<!-- Card Header -->
