@@ -1,4 +1,4 @@
-import { CodeIcon, Globe, HomeIcon, NotebookIcon, ServerIcon } from 'lucide-react';
+import { BookIcon, CodeIcon, Globe, HomeIcon, NotebookIcon, ServerIcon } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 // Navbar Icons
 import GithubSvg from '@shared/assets/github.svg';
@@ -259,14 +259,77 @@ export const DATA: ResumeData = {
             ],
             links: [
                 {
-                type: 'Internal company',
-                href: '',
-                icon: ServerIcon
+                    type: 'Internal company',
+                    href: '',
+                    icon: ServerIcon
                 }
             ],
             image: HeristepDashboard,
             video: ''
+        },
+        {
+            title: 'Multi-Agent Ontology Generation System',
+            href: 'https://github.com/tinbalon3/Ontology_integrated_chatbot?tab=readme-ov-file#multi-agent-ontology-generation-system',
+            dates: 'Sept 2024 - March 2026',
+            active: false,
+            description:
+                'Automated ontology generation system using multiple AI models to build knowledge graphs from text data. Features multi-agent architecture with OpenAI GPT, Google Gemini, and DeepSeek working in parallel to generate competency questions, skeleton ontologies, and Cypher queries. Integrated with Neo4j for graph database storage and vector search capabilities. Achieved 9.3/10 grade for graduation thesis.',
+            technologies: [
+                'Python',
+                'OpenAI API',
+                'Google Gemini API',
+                'DeepSeek API',
+                'Neo4j',
+                'Vector Search',
+                'YAML',
+                'Async/Await',
+                'Knowledge Graph'
+            ],
+            links: [
+                {
+                    type: 'Graduation Thesis',
+                    href: 'https://github.com/tinbalon3/Ontology_integrated_chatbot?tab=readme-ov-file#multi-agent-ontology-generation-system',
+                    icon: BookIcon
+                }
+            ],
+            image: 'https://media.canva.com/v2/image-resize/format:PNG/height:752/quality:100/uri:ifs%3A%2F%2FM%2Fa2ded45b-463b-4e2f-9204-a6373eadcd70/watermark:F/width:1600?csig=AAAAAAAAAAAAAAAAAAAAALsJf912uburb6w3BluCVrOXQJvrXD2O57ATgdC45iGm&exp=1772375287&osig=AAAAAAAAAAAAAAAAAAAAACfadlWjx4zql_lsKi4qSiwGUDh59jDV4o_qM5bRVgwd&signer=media-rpc&x-canva-quality=screen_2x',
+            video: ''
         }
+        // ,
+        // {
+        //     title: 'VNA Fruit Website',
+        //     href: 'https://github.com/tinbalon3/SHOPAPP_BACKEND',
+        //     dates: '2024 - 2025',
+        //     active: false,
+        //     description:
+        //         'E-commerce platform for Vietnamese fruits built with MVC architecture. Features product browsing, cart management, VNPay payment integration, product reviews, and admin dashboard. Implemented caching with Redis, asynchronous email notifications with Kafka, and Docker containerization for deployment.',
+        //     technologies: [
+        //         'Java',
+        //         'Spring Boot',
+        //         'Angular',
+        //         'MySQL',
+        //         'Redis',
+        //         'Kafka',
+        //         'VNPay',
+        //         'Docker',
+        //         'Flyway',
+        //         'JUnit'
+        //     ],
+        //     links: [
+        //         {
+        //             type: 'Backend',
+        //             href: 'https://github.com/tinbalon3/SHOPAPP_BACKEND',
+        //             icon: CodeIcon
+        //         },
+        //         {
+        //             type: 'Frontend',
+        //             href: 'https://github.com/tinbalon3/SHOPAPP_FRONTEND',
+        //             icon: CodeIcon
+        //         }
+        //     ],
+        //     image: '',
+        //     video: ''
+        // }
     ],
     hackathons: []
 };
