@@ -10,9 +10,9 @@ export function Navbar() {
     const { language, setLanguage, t } = useLanguage();
 
     return (
-        <header className="fixed inset-x-0 top-4 z-50 px-4 sm:px-6" aria-label="Main navigation">
-            <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/[0.1] bg-background/75 px-2 py-2 shadow-2xl shadow-black/20 backdrop-blur-xl">
-                <Link to="/" className="group flex items-center gap-2 rounded-full px-3 py-1.5" aria-label="Go to homepage">
+        <header className="fixed inset-x-0 top-3 z-50 px-2 sm:top-4 sm:px-6" aria-label="Main navigation">
+            <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/[0.1] bg-background/75 px-1 py-1.5 shadow-2xl shadow-black/20 backdrop-blur-xl sm:px-2 sm:py-2">
+                <Link to="/" className="group flex items-center gap-1.5 rounded-full px-2 py-1.5 sm:gap-2 sm:px-3" aria-label="Go to homepage">
                     <span className="flex size-8 items-center justify-center rounded-full bg-primary text-xs font-extrabold text-primary-foreground transition-transform duration-300 group-hover:rotate-12">
                         DS
                     </span>
@@ -25,7 +25,7 @@ export function Navbar() {
                         const isHashLink = item.href.startsWith('#');
                         const isActive = !isHashLink && location.pathname === item.href;
                         const className = cn(
-                            'group flex items-center gap-2 rounded-full px-3 py-2 text-xs font-semibold text-muted-foreground transition-colors duration-200 hover:bg-accent hover:text-foreground sm:px-4',
+                            'group flex items-center gap-1.5 rounded-full px-2 py-2 text-xs font-semibold text-muted-foreground transition-colors duration-200 hover:bg-accent hover:text-foreground sm:gap-2 sm:px-4',
                             isActive && 'bg-accent text-foreground'
                         );
                         const content = (
@@ -47,16 +47,16 @@ export function Navbar() {
                     })}
                 </nav>
 
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-0.5 sm:gap-1">
                     <div className="flex items-center rounded-full border border-border/70 bg-card/40 p-0.5" aria-label={t('languageLabel')}>
-                        <Languages className="mx-1.5 size-3.5 text-primary" aria-hidden="true" />
+                        <Languages className="mx-1 size-3.5 text-primary max-[380px]:hidden" aria-hidden="true" />
                         {(['en', 'vi'] as const).map((option) => (
                             <button
                                 key={option}
                                 type="button"
                                 onClick={() => setLanguage(option)}
                                 className={cn(
-                                    'rounded-full px-2 py-1 text-[10px] font-bold uppercase tracking-[0.12em] transition-colors',
+                                    'rounded-full px-1.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] transition-colors sm:px-2 sm:tracking-[0.12em]',
                                     language === option ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
                                 )}
                                 aria-pressed={language === option}

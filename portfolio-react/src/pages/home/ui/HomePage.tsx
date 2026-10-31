@@ -1,9 +1,10 @@
 import { marked } from 'marked';
+import { useEffect, useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import {
-    Activity,
     ArrowDown,
     ArrowUpRight,
+    ArrowUp,
     CheckCircle2,
     Code2,
     ExternalLink,
@@ -81,21 +82,6 @@ function HeroVisual() {
                     </div>
                 </div>
             </div>
-            <motion.div
-                className="glass-panel absolute -bottom-7 -left-4 z-10 rounded-2xl p-4 sm:-left-12"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-            >
-                <div className="mb-2 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
-                    <Activity className="size-3 text-primary" />
-                    {t('currentlyBuilding')}
-                </div>
-                <div className="text-sm font-semibold text-foreground">HeriStepAI ecosystem</div>
-                <div className="mt-2 h-1 w-28 overflow-hidden rounded-full bg-white/10">
-                    <motion.div className="h-full rounded-full bg-primary" initial={{ width: 0 }} animate={{ width: '78%' }} transition={{ delay: 1, duration: 1 }} />
-                </div>
-            </motion.div>
         </div>
     );
 }
@@ -104,14 +90,22 @@ export function HomePage() {
     const { scrollYProgress } = useScroll();
     const progress = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
     const { language, t } = useLanguage();
+    const [showScrollTop, setShowScrollTop] = useState(false);
     const description = language === 'vi' ? DATA.descriptionVi : DATA.description;
     const summary = language === 'vi' ? DATA.summaryVi : DATA.summary;
+
+    useEffect(() => {
+        const handleScroll = () => setShowScrollTop(window.scrollY > 520);
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
         <main className="relative">
             <motion.div className="scroll-progress" style={{ scaleX: progress }} aria-hidden="true" />
 
-            <section id="hero" className="page-container flex min-h-screen items-center pb-20 pt-32 sm:pb-28 sm:pt-36">
+            <section id="hero" className="page-container flex min-h-0 items-start pb-16 pt-28 sm:pb-20 sm:pt-32 lg:min-h-screen lg:items-center lg:pb-28 lg:pt-36">
                 <div className="grid w-full items-center gap-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20">
                     <div>
                         <BlurFade delay={BLUR_FADE_DELAY}>
@@ -297,6 +291,23 @@ export function HomePage() {
                     {t('backToTop')} <ArrowDown className="size-3 rotate-180" />
                 </a>
             </section>
+
+            {showScrollTop ? (
+                <motion.button
+                    type="button"
+                    initial={{ opacity: 0, y: 16, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    whileHover={{ y: -4 }}
+                    whileTap={{ scale: 0.94 }}
+                    transition={{ duration: 0.2 }}
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="fixed bottom-6 right-5 z-40 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-card/90 px-3 py-2.5 text-xs font-bold text-primary shadow-2xl shadow-black/30 backdrop-blur-xl transition-colors hover:bg-primary hover:text-primary-foreground sm:bottom-8 sm:right-8"
+                    aria-label={t('backToTop')}
+                >
+                    <ArrowUp className="size-4" />
+                    <span className="hidden sm:inline">{t('backToTop')}</span>
+                </motion.button>
+            ) : null}
         </main>
     );
 }
