@@ -17,7 +17,8 @@ const ROUTES = Object.freeze({
 export function AppRouter() {
     return (
         <BrowserRouter>
-            <div className="relative mx-auto min-h-screen max-w-2xl bg-background px-6 py-12 font-sans antialiased sm:py-24 lg:max-w-4xl xl:max-w-5xl">
+            <div className="site-shell relative min-h-screen overflow-x-clip font-sans antialiased">
+                <div className="site-grid" aria-hidden="true" />
                 <Routes>
                     <Route path={ROUTES.home} element={<HomePage />} />
                     <Route path={ROUTES.blog} element={<BlogPage />} />

@@ -56,6 +56,7 @@ const config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
+        heading: ['Archivo', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         sans: ['Inter var', ...fontFamily.sans],
       },
     },
@@ -64,4 +65,3 @@ const config = {
 };
 
 export default config;
-

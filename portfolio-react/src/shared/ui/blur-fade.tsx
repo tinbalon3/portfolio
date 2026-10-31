@@ -9,13 +9,14 @@ interface BlurFadeProps extends PropsWithChildren {
 }
 
 export function BlurFade({ className, delay = 0, yOffset = 8, children }: BlurFadeProps) {
-  return (
-    <motion.div
-      className={cn(className)}
-      initial={{ opacity: 0, y: yOffset, filter: 'blur(8px)' }}
-      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-      transition={{ duration: 0.4, delay, ease: 'easeOut' }}
-    >
+    return (
+      <motion.div
+        className={cn(className)}
+        initial={{ opacity: 0, y: yOffset, filter: 'blur(8px)' }}
+        whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.4, delay, ease: 'easeOut' }}
+      >
       {children}
     </motion.div>
   );
